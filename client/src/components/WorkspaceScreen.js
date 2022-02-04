@@ -5,6 +5,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 
 import { Typography } from '@mui/material'
 import { GlobalStoreContext } from '../store/index.js'
@@ -18,6 +19,7 @@ function WorkspaceScreen() {
     const { store } = useContext(GlobalStoreContext);
 
     let editItems = "";
+    let commentsCard= "";
     if (store.currentList) {
         editItems =
             <List id="edit-items" sx={{ width: '100%', bgcolor: 'background.paper' }}>
@@ -30,6 +32,18 @@ function WorkspaceScreen() {
                         />
                     ))
                 }
+            </List>;
+
+        commentsCard =
+            <List sx={{ width: '98%', left: '2%', bgcolor: '#fff5de'}}>
+            {
+                store.currentList.comments.map((item, index) => (
+                    <Top5Item
+                        text={item}
+                        index={index}
+                    />
+                ))
+            }
             </List>;
     }
     return (

@@ -32,10 +32,9 @@ export const createTop5List = (newListName, newItems, userEmail) => {
 }
 export const deleteTop5ListById = (id) => api.delete(`/top5list/${id}`)
 export const getTop5ListById = (id) => api.get(`/top5list/${id}`)
-export const getTop5ListPairs = () => api.get(`/top5listpairs/`)
+export const getTop5ListPairs = () => api.get(`/top5listpairs`)
+export const getTop5ListPairsByUser = (user) => api.get(`/top5listpairs/${user}`)
 export const getAllTop5Lists = () => api.get('/alltop5lists')
-export const getAllTop5ListsByUser = (user) => api.get('/alltop5lists/${user}')
-export const getAllTop5ListsByCommunity = () => api.get('/alltop5listsbycommunity')
 
 export const updateTop5ListById = (id, top5List) => {
     return api.put(`/top5list/${id}`, {
@@ -44,9 +43,7 @@ export const updateTop5ListById = (id, top5List) => {
     })
 }
 
-export const likeTop5List = (id) => {
-    return api.put('/top5list/like/${id}')
-}
+export const likeTop5List = (id) => api.put('/top5list/like/${id}')
 
 export const dislikeTop5List = (id) => {
     return api.put('/top5list/dislike/${id}')
@@ -57,6 +54,8 @@ const apis = {
     deleteTop5ListById,
     getTop5ListById,
     getTop5ListPairs,
+    getTop5ListPairsByUser,
+    getAllTop5Lists,
     updateTop5ListById
 }
 

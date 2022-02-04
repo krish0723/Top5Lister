@@ -74,8 +74,8 @@ loginUser = async (req, res) => {
             success: true,
             user: {
                 firstName: existingUser.firstName,
-                lastName: existingUser.lastName,  
-                email: existingUser.email              
+                lastName: existingUser.lastName,
+                email: existingUser.email
             }
         })
 
@@ -154,8 +154,8 @@ registerUser = async (req, res) => {
             success: true,
             user: {
                 firstName: savedUser.firstName,
-                lastName: savedUser.lastName,  
-                email: savedUser.email              
+                lastName: savedUser.lastName,
+                email: savedUser.email
             }
         })
 

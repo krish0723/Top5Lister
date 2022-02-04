@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import AuthContext from '../auth';
 import { GlobalStoreContext } from '../store'
@@ -26,6 +26,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import SortIcon from '@mui/icons-material/Sort';
 import FunctionsIcon from '@mui/icons-material/Functions';
 import SearchIcon from '@mui/icons-material/Search';
+import Tooltip from '@mui/material/Tooltip';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -71,12 +72,28 @@ export default function MenuBar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [homeAnchorEl, setHomeAnchorEl] = useState(null);
+    const [allListsAnchorEl, setAllListsAnchorEl] = useState(null);
+    const [userListsAnchorEl, setUserListsAnchorEl] = useState(null);
+    const [comListsAnchorEl, setComListsAnchorEl] = useState(null);
+    const [viewOpen, setViewOpen] = useState(null);
     const isMenuOpen = Boolean(anchorEl);
-
-    const handleSortMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
+    const isHomeClicked = Boolean(homeAnchorEl);
+    const isAllListsClicked = Boolean(allListsAnchorEl);
+    const isUserListsClicked = Boolean(userListsAnchorEl);
+    const isComListsClicked = Boolean(comListsAnchorEl);
+    const [hover, setHover] = useState(false);
+    const onHover = () => {
+        setHover(true);
     };
+    const onLeave = () => {
+      setHover(false);
+    };
+    useEffect(() => {
+        setViewOpen("yourListsView");
+    },[]);
 
+    // handleMenuClose
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
@@ -86,58 +103,108 @@ export default function MenuBar() {
         auth.logoutUser();
     }
 
+    // open sort menu
+    const handleSortMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+
+    };
+
+    // sort menu button handlers
     const handlePublishDateNewestSort = () => {
+        let sortedData = store.idNamePairs.sort((a,b) => (b.createdAt > a.createdAt) ? 1 : -1);
+        store.searchIdPairs(sortedData);
     }
 
     const handlePublishDateOldestSort = () => {
+        let sortedData = store.idNamePairs.sort((a,b) => (a.createdAt > b.createdAt) ? 1 : -1);
+        store.searchIdPairs(sortedData);
     }
 
     const handleViewsSort = () => {
+        let sortedData = store.idNamePairs.sort((a,b) => (b.views > a.views) ? 1 : -1);
+        store.searchIdPairs(sortedData);
     }
 
     const handleLikesSort = () => {
+        let sortedData = store.idNamePairs.sort((a,b) => (b.likes > a.likes) ? 1 : -1);
+        store.searchIdPairs(sortedData);
     }
 
     const handleDislikesSort= () => {
+        let sortedData = store.idNamePairs.sort((a,b) => (b.dislikes > a.dislikes) ? 1 : -1);
+        store.searchIdPairs(sortedData);
     }
 
+    const handleSearchClick= (event) => {
+        if (event.key === 'Enter'){
+            console.log(viewOpen);
+            if (viewOpen == "yourListsView"){
+                if (event.target.value == ""){
+                    store.loadIdNamePairs();
+                }else{
+                    let filteredList = store.idNamePairs.filter(pair => pair.name.includes(event.target.value));
+                    console.log(filteredList);
+                    store.searchIdPairs(filteredList);
+                }
+            }
+            if (viewOpen == "allListsView"){
+                if (event.target.value == ""){
+                    store.loadAllListsArray();
+                }else{
+                    let filteredList = store.idNamePairs.filter(pair => pair.name.includes(event.target.value));
+                    console.log(filteredList);
+                    store.searchIdPairs(filteredList);
+                }
+            }
+            if (viewOpen == "usersListsView"){
+                if (event.target.value == ""){
+                    store.loadAllListsArray();
+                }else{
+                    store.loadUserListsArray(event.target.value);
+                }
+            }
+        }
+    }
+
+    // button click handlers
     const handleHomeViewClick = () => {
+        setViewOpen("yourListsView");
+        store.loadIdNamePairs();
+        setHomeAnchorEl("");
+        setAllListsAnchorEl(null);
+        setUserListsAnchorEl(null);
+        setComListsAnchorEl(null);
 
     }
 
     const handleAllListsViewClick = () => {
+        setViewOpen("allListsView");
+        store.loadAllListsArray();
+        setHomeAnchorEl(null);
+        setAllListsAnchorEl("");
+        setUserListsAnchorEl(null);
+        setComListsAnchorEl(null);
 
     }
 
     const handleUserListViewClick = () => {
-
+        setViewOpen("usersListsView");
+        setHomeAnchorEl(null);
+        setAllListsAnchorEl(null);
+        setUserListsAnchorEl("");
+        setComListsAnchorEl(null);
     }
 
     const handleComListsViewClick = () => {
-
+        setViewOpen("comListsView");
+        setHomeAnchorEl(null);
+        setAllListsAnchorEl(null);
+        setUserListsAnchorEl(null);
+        setComListsAnchorEl("");
     }
 
     const menuId = 'primary-search-account-menu';
-    const loggedOutMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}><Link to='/login/'>Login</Link></MenuItem>
-            <MenuItem onClick={handleMenuClose}><Link to='/register/'>Create New Account</Link></MenuItem>
-        </Menu>
-    );
+
     const loggedInMenu =
         <Menu
             anchorEl={anchorEl}
@@ -163,45 +230,44 @@ export default function MenuBar() {
         </Menu>
 
     let editToolbar = "";
-    let menu = loggedOutMenu;
-    if (auth.loggedIn) {
-        menu = loggedInMenu;
-    }
-
-    function getAccountMenu(loggedIn) {
-        let userInitials = auth.getUserInitials();
-        console.log("userInitials: " + userInitials);
-        if (loggedIn)
-            return <div>{userInitials}</div>;
-        else
-            return <AccountCircle />;
-    }
+    let menu = loggedInMenu;
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" color='transparent'>
                 <Toolbar>
-                    <Box sx={{ flexGrow: .02 }}>
-                        <IconButton onClick={handleHomeViewClick}>
-                            <HomeIcon fontSize='large'/>
+                    <Tooltip title="Your lists, your home">
+                    <Box sx={{ flexGrow: .02 }} >
+                        <IconButton onClick={handleHomeViewClick} >
+                            <HomeIcon fontSize='large' style={isHomeClicked ? {color:"#000000"} : {color:"default"}} />
                         </IconButton>
                     </Box>
+                    </Tooltip>
+
+                    <Tooltip title="See all lists around the world">
                     <Box sx={{ flexGrow: .02 }}>
                         <IconButton onClick={handleAllListsViewClick} >
                             <GroupIcon fontSize='large'/>
                         </IconButton>
                     </Box>
-                    <Box sx={{ flexGrow: .02 }}>
-                        <IconButton onClick={handleUserListViewClick}>
-                            <PersonOutlineIcon fontSize='large'/>
-                        </IconButton>
+                    </Tooltip>
+
+                    <Tooltip title="Search a user's email to see their lists">
+                    <Box  sx={{ flexGrow: .02 }}>
+                            <IconButton onClick={handleUserListViewClick}>
+                                <PersonOutlineIcon fontSize='large'/>
+                            </IconButton>
                     </Box>
+                    </Tooltip>
+
+                    <Tooltip title="Search a list name to see a ranking of everyone's list items">
                     <Box sx={{ flexGrow: .02 }}>
                         <IconButton onClick={handleComListsViewClick}>
                             <FunctionsIcon fontSize='large'/>
                         </IconButton>
                     </Box>
-                    <Search>
+                    </Tooltip>
+                    <Search onKeyDown={handleSearchClick}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
@@ -211,14 +277,13 @@ export default function MenuBar() {
                         />
                     </Search>
                     <Box sx={{ flexGrow: 1 }}>{editToolbar}</Box>
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ display: { xs: 'none', md: 'flex' } }} onClick={handleSortMenuOpen}>
                         <IconButton
                             size="large"
                             edge="end"
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={handleSortMenuOpen}
                             color="inherit"
                         >
                             <Box sx={{ fontWeight: 'bold', fontSize: 15, p: 1, flexGrow: .5 }}>SORT BY</Box>

@@ -20,7 +20,7 @@ const HomeScreen = () => {
     const { auth } = useContext(AuthContext);
 
     useEffect(() => {
-        store.loadIdNamePairs();
+            store.loadIdNamePairs();
     }, []);
 
     function handleCreateNewList() {
@@ -28,8 +28,10 @@ const HomeScreen = () => {
     }
     let listCard = "";
     let userIdNamePairs = [];
-    if (store) {
-        console.log(store.idNamePairs)
+
+    if (store.idNamePairs) {
+        console.log(store.idNamePairs);
+        console.log(store.viewOpen);
         listCard =
             <List sx={{ width: '98%', left: '2%', bgcolor: '#fff5de'}}>
             {
@@ -38,6 +40,7 @@ const HomeScreen = () => {
                         key={pair._id}
                         idNamePair={pair}
                         selected={false}
+                        variant="outlined"
                     />
                 ))
             }
@@ -45,7 +48,7 @@ const HomeScreen = () => {
     }
     return (
         <Grid container direction={'row'}>
-        <MenuBar />
+        <MenuBar/>
         <div id="top5-list-selector">
             <div id="list-selector-list">
                 {
@@ -53,17 +56,16 @@ const HomeScreen = () => {
                 }
                 <MUIDeleteModal />
             </div>
-            <div id="list-selector-heading">
+        </div>
+            <div id="list-selector-heading" onClick={handleCreateNewList}>
             <Fab
                 color="primary"
                 aria-label="add"
                 id="add-list-button"
-                onClick={handleCreateNewList}
             >
                 <AddIcon />
             </Fab>
-                <Typography variant="h3">Your Lists</Typography>
-            </div>
+            <Typography variant="h3">Add List</Typography>
         </div>
     </Grid>)
 }

@@ -1,0 +1,101 @@
+[{
+  "_id": {
+    "$oid": "6189ec7ff57d8635f27977ac"
+  },
+  "items": [
+    "ramen",
+    "spaghetti",
+    "steak",
+    "minestrone",
+    "pizza"
+  ],
+  "name": "Favorite Dishes",
+  "ownerEmail": "krish0723@gmail.com",
+  "createdAt": {
+    "$date": "2021-12-07T02:16:31.605Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:51:00.747Z"
+  },
+  "__v": 2,
+  "comments": [],
+  "dislikes": 6,
+  "likes": 15,
+  "views": 1297867,
+  "published": false
+},{
+  "_id": {
+    "$oid": "61aec593b97aa370b04bdf62"
+  },
+  "items": [
+    "The Godfather",
+    "Star Wars",
+    "Naruto",
+    "Attack on Titan",
+    "Bleach"
+  ],
+  "likes": 568,
+  "dislikes": 80,
+  "views": 6202348,
+  "comments": [],
+  "published": false,
+  "name": "Favorite Films",
+  "ownerEmail": "sallydally400@gmail.com",
+  "createdAt": {
+    "$date": "2021-12-07T02:23:15.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:07.482Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61aed3ac1a127c7280b3316f"
+  },
+  "items": [
+    "God's Plan",
+    "Controlla",
+    "Gyalchester",
+    "6 God",
+    "Used To"
+  ],
+  "likes": 57,
+  "dislikes": 20,
+  "views": 400000,
+  "comments": [],
+  "published": false,
+  "name": "Top Drake Songs",
+  "ownerEmail": "krish0723@gmail.com",
+  "createdAt": {
+    "$date": "2021-12-07T03:23:24.712Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:23:26.918Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61aed3b01a127c7280b3317f"
+  },
+  "items": [
+    "Red Hot Chilli Peppers",
+    "John Mayer Trio",
+    "Grateful Dead",
+    "One Ok Rock",
+    "Michael Jackson"
+  ],
+  "likes": 72348,
+  "dislikes": 5002,
+  "views": 50002948,
+  "comments": [],
+  "published": false,
+  "name": "Favorite Bands",
+  "ownerEmail": "joeshmo123@gmail.com",
+  "createdAt": {
+    "$date": "2021-12-07T03:23:28.925Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:23:30.322Z"
+  },
+  "__v": 0
+}]
