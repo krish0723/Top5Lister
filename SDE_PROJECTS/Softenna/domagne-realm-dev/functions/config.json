@@ -1,0 +1,86 @@
+[
+    {
+        "name": "resetFunc",
+        "private": true
+    },
+    {
+        "name": "authByPhoneFunc",
+        "private": false
+    },
+    {
+        "name": "checkVerify",
+        "private": false
+    },
+    {
+        "name": "createComment",
+        "private": false
+    },
+    {
+        "name": "createPost",
+        "private": false
+    },
+    {
+        "name": "createUser",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "deletePost",
+        "private": false
+    },
+    {
+        "name": "generatePaginationQuery",
+        "private": false
+    },
+    {
+        "name": "getPost",
+        "private": false
+    },
+    {
+        "name": "getPostsByHashtag",
+        "private": false
+    },
+    {
+        "name": "getPostsByUser",
+        "private": false
+    },
+    {
+        "name": "getUser",
+        "private": false
+    },
+    {
+        "name": "getUserFeed",
+        "private": false
+    },
+    {
+        "name": "getUserLifetimeEarned",
+        "private": false
+    },
+    {
+        "name": "getUserProfileData",
+        "private": false
+    },
+    {
+        "name": "searchHashtags",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "searchUsers",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "startVerify",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "updatePost",
+        "private": false
+    },
+    {
+        "name": "updateUser",
+        "private": false
+    }
+]

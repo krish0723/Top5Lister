@@ -1,0 +1,152 @@
+[
+    {
+        "route": "/getuserfeed",
+        "http_method": "GET",
+        "function_name": "getUserFeed",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/getuserlifetimeearned",
+        "http_method": "GET",
+        "function_name": "getUserLifetimeEarned",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/getuserprofiledata",
+        "http_method": "GET",
+        "function_name": "getUserProfileData",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/getpost",
+        "http_method": "GET",
+        "function_name": "getPost",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/getpostsbyhashtag",
+        "http_method": "GET",
+        "function_name": "getPostsByHashtag",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/getpostsbyuser",
+        "http_method": "GET",
+        "function_name": "getPostsByUser",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/searchhashtags",
+        "http_method": "GET",
+        "function_name": "searchHashtags",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/searchusers",
+        "http_method": "GET",
+        "function_name": "searchUsers",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/getuser",
+        "http_method": "GET",
+        "function_name": "getUser",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/createuser",
+        "http_method": "POST",
+        "function_name": "createUser",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/createpost",
+        "http_method": "POST",
+        "function_name": "createPost",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/resetpassword",
+        "http_method": "POST",
+        "function_name": "resetFunc",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/startverify",
+        "http_method": "POST",
+        "function_name": "startVerify",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/updateuser",
+        "http_method": "PUT",
+        "function_name": "updateUser",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    },
+    {
+        "route": "/updatepost",
+        "http_method": "PUT",
+        "function_name": "updatePost",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": false,
+        "disabled": false
+    }
+]
