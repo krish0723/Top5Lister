@@ -1,5 +1,5 @@
-# Top5Lister-Application
-Undergraduate Academic Project: Social Lister Application
+# Top5Lister
+Undergraduate Academic Project: Social Listing Application that allows users to create and share any type of list - from favorite TV shows to least favorite vegetables.
 
 Store Management Design Diagram: https://lucid.app/lucidchart/d4e8807d-7d77-4d06-aeeb-0a5dba4dad6d/edit?viewport_loc=2065%2C-1208%2C1376%2C874%2C0_0&invitationId=inv_d1e9c8b3-2098-4af8-9859-1b821b6b9390
 
